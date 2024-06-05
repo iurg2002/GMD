@@ -1109,7 +1109,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6538495175009242096, guid: 30ea84ce152f1491dab3894a5ec6cf2b, type: 3}
       propertyPath: nextLevelName
-      value: Level2
+      value: Tutorial part 2
       objectReference: {fileID: 0}
     - target: {fileID: 7764763671085644216, guid: 30ea84ce152f1491dab3894a5ec6cf2b, type: 3}
       propertyPath: m_Name
