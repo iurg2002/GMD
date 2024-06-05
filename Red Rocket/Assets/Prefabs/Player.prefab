@@ -268,10 +268,10 @@ MonoBehaviour:
   coyoteTime: 0.2
   jumpInputBufferTime: 0.2
   _groundCheckPoint: {fileID: 5252384343153342255}
-  _groundCheckSize: {x: 0.49, y: 0.03}
+  _groundCheckSize: {x: 0.9, y: 0.2}
   _frontWallCheckPoint: {fileID: 1304186845057034597}
   _backWallCheckPoint: {fileID: 1611852499369129825}
-  _wallCheckSize: {x: 0.5, y: 1}
+  _wallCheckSize: {x: 0.5, y: 0.7}
   _groundLayer:
     serializedVersion: 2
     m_Bits: 256
