@@ -12,7 +12,9 @@ public class PlayerMovement : MonoBehaviour
 	public float maxFallSpeed; 
 	[Space(5)]
 	public float fastFallGravityMult; 
-	public float maxFastFallSpeed; 
+	public float maxFastFallSpeed;
+	public AudioSource audioSource;
+	public AudioClip jumpSound;
 
 	[Space(20)]
 
@@ -134,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		RB = GetComponent<Rigidbody2D>();
 		// AnimHandler = GetComponent<PlayerAnimator>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	private void Start()
@@ -240,6 +243,7 @@ public class PlayerMovement : MonoBehaviour
 			_isJumpCut = false;
 			_isJumpFalling = false;
 			Jump();
+			PlaySound(jumpSound);
 
 			// AnimHandler.startedJumping = true;
 		}
@@ -255,9 +259,11 @@ public class PlayerMovement : MonoBehaviour
 			_lastWallJumpDir = (LastOnWallRightTime > 0) ? -1 : 1;
 
 			WallJump(_lastWallJumpDir);
+			PlaySound(jumpSound);
 		}
 
 		#endregion
+
 
 
 		#region SLIDE CHECKS
@@ -304,6 +310,14 @@ public class PlayerMovement : MonoBehaviour
 		}
 
 		#endregion
+	}
+
+	private void PlaySound(AudioClip clip)
+	{
+		if (audioSource != null && clip != null)
+		{
+			audioSource.PlayOneShot(clip);
+		}
 	}
 
 	private void FixedUpdate()
