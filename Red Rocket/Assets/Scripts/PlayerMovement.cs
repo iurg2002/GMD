@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
 	#region COMPONENTS
 	public Rigidbody2D RB { get; private set; }
-	// public PlayerAnimator AnimHandler { get; private set; }
+	public Animator animator;
 	#endregion
 
 	#region STATE PARAMETERS
@@ -147,6 +147,16 @@ public class PlayerMovement : MonoBehaviour
 
 	private void Update()
 	{
+
+        animator.SetFloat("Speed", Mathf.Abs(_moveInput.x));
+        animator.SetFloat("IsJumping", Mathf.Abs(RB.velocity.y));
+
+        animator.SetBool("IsSliding", _frontWallCheckPoint.position.y > _backWallCheckPoint.position.y);
+        // animator.SetBool("IsFalling", RB.velocity.y < 0);
+        animator.SetFloat("IsFalling", Mathf.Abs(RB.velocity.y));
+        
+
+
 		#region TIMERS
 		LastOnGroundTime -= Time.deltaTime;
 		LastOnWallTime -= Time.deltaTime;
