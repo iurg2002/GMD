@@ -231,6 +231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
+  animator: {fileID: 8923816374047635557}
 --- !u!82 &8822526946872881945
 AudioSource:
   m_ObjectHideFlags: 0
