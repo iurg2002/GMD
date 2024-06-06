@@ -151,7 +151,9 @@ public class PlayerMovement : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(_moveInput.x));
         animator.SetFloat("IsJumping", Mathf.Abs(RB.velocity.y));
 
-        animator.SetBool("IsSliding", _frontWallCheckPoint.position.y > _backWallCheckPoint.position.y);
+        // if player touches front ground check or back ground check, then player is sliding
+        // animator.SetBool("IsSliding", Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) || Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, _groundLayer));
+        // animator.SetBool("IsSliding", _frontWallCheckPoint.position.y > _backWallCheckPoint.position.y);
         // animator.SetBool("IsFalling", RB.velocity.y < 0);
         animator.SetFloat("IsFalling", Mathf.Abs(RB.velocity.y));
         
@@ -217,7 +219,10 @@ public class PlayerMovement : MonoBehaviour
 			//Right Wall Check
 			if (((Physics2D.OverlapBox(_frontWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && !IsFacingRight)
 				|| (Physics2D.OverlapBox(_backWallCheckPoint.position, _wallCheckSize, 0, _groundLayer) && IsFacingRight)) && !IsWallJumping)
-				LastOnWallLeftTime = coyoteTime;
+                {
+                    LastOnWallLeftTime = coyoteTime;
+                }
+				
 
 			LastOnWallTime = Mathf.Max(LastOnWallLeftTime, LastOnWallRightTime);
 		}
@@ -281,6 +286,8 @@ public class PlayerMovement : MonoBehaviour
 			IsSliding = true;
 		else
 			IsSliding = false;
+
+        animator.SetBool("IsSliding", IsSliding);
 		#endregion
 
 		#region GRAVITY
