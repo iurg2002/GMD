@@ -14,9 +14,7 @@ public class Respawn : MonoBehaviour
         {
             // log action
             Debug.Log("Player died");
-            animator.SetBool("IsDying", true);
             RespawnPlayer();
-            animator.SetBool("IsDying", false);
         }
     }
 
